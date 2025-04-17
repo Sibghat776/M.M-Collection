@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Anton&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Carter+One&family=Dancing+Script:wght@400..700&family=Great+Vibes&family=IM+Fell+DW+Pica+SC&family=Luckiest+Guy&family=Manrope:wght@200..800&family=Mitr:wght@200;300;400;500;600;700&family=Playwrite+ZA:wght@100..400&family=Rammetto+One&family=Red+Rose:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yeseva+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Carousel */
+.custom-carousel {
+  width: 40%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.carousel-item > img {
+  height: 520px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.carousel-caption > h5 {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+/* Collection Section */
+.collection-section {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 10px 0;
+  margin-top: 5%;
+}
+
+/* Cards */
+.card {
+  margin-bottom: 2%;
+  /* border: 2px solid black !important; */
+}
+
+
+/* Responsive Carousel */
+@media (max-width: 768px) {
+  .custom-carousel {
+    width: 90%;
+  }
+}
+
+/* Add Button Styling */
+
+.addBtn > button {
+  width: 60px;
+  height: 60px;
+  font-size: 32px;
+  font-weight: bold;
+  border: none;
+  background-color: #000;
+  color: white;
+  position: absolute;
+  top: 140%;
+  right: 1%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.addBtn > button:hover {
+  transform: scale(1.1);
+  background-color: #333;
+}
