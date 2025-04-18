@@ -42,11 +42,12 @@
           </li>
         </ul>
         <div class="d-flex m-1">
-          <button type="button" class="btn me-1 btn-primary">
-            <a class="nav-link active text-light">Create Account</a>
+          <button type="button" class="btn me-1 btn-primary" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop" >
+            Create Account
           </button>
           <button type="button" class="btn btn-primary me-1">
-            <a class="nav-link active text-light">Login</a>
+            Login
           </button>
         </div>
         <form class="d-flex" role="search">
@@ -56,6 +57,56 @@
       </div>
     </div>
   </nav>
+
+
+  <!-- Signup From -->
+  <div class="modal" id="staticBackdrop" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content p-4">
+        <div class="modal-header p-2">
+          <h5 class="modal-title fs-3">SIGN UP</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">Email</label>
+              <input type="email" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Password</label>
+              <input type="password" class="form-control" id="inputPassword4">
+            </div>
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Residential Area</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="col-12">
+              <label for="inputAddress2" class="form-label">House address</label>
+              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="col-md-4">
+              <label for="inputState" class="form-label">City</label>
+              <select id="inputState" class="form-select">
+                <option selected>Choose...</option>
+                <option>Karachi</option>
+                <option>Islamabad</option>
+                <option>Balochistan</option>
+                <option>Quetta</option>
+                <option>Peshawar</option>
+                <option>Lahore</option>
+                <option>Other...</option>
+              </select>
+            </div>
+            </div>
+            <div class="col-12 px-3 d-flex justify-content-center py-3">
+              <button type="submit" class="btn btn-primary px-5">Sign in</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Carousel -->
   <div id="carouselExampleFade" class="carousel slide carousel-fade">
@@ -128,32 +179,32 @@
                   <label for="productName" class="form-label">Product Name</label>
                   <input type="text" class="form-control" id="productName" placeholder="e.g. Leather Wallet" required>
                 </div>
-              
+
                 <div class="col-md-6">
                   <label for="productPrice" class="form-label">Product Price</label>
                   <input type="number" class="form-control" id="productPrice" placeholder="e.g. 1500" required>
                 </div>
-              
+
                 <div class="col-md-6">
                   <label for="phoneNumber" class="form-label">Phone Number <br>(don't use +92 OR 0!)</label>
                   <input type="number" class="form-control" id="phoneNumber" placeholder="e.g. 3001234567" required>
                 </div>
-              
+
                 <div class="mb-3">
                   <label for="productImage" class="form-label">Product Image</label>
                   <input class="form-control" type="file" id="productImage" required>
                 </div>
-              
+
                 <div class="col-12">
                   <label for="productDesc" class="form-label">Product Description</label>
-                  <textarea class="form-control" id="productDesc" rows="3" placeholder="Write a short description..." required></textarea>
+                  <textarea class="form-control" id="productDesc" rows="3" placeholder="Write a short description..."
+                    required></textarea>
                 </div>
-              
+
                 <div class="col-12 text-end">
                   <button type="submit" class="btn btn-success addCardBtn">Add Card</button>
                 </div>
               </form>
-              
             </div>
           </div>
         </div>
