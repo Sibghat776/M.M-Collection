@@ -49,6 +49,48 @@
   border: 1px solid black;
 }
 
+.flex-shrink-0 > img {
+  height: 100px;
+}
+
+.image-card {
+  height: 300px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(80%);
+  transition: all 0.3s ease;
+}
+
+.image-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(60%);
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px #000;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.image-card:hover .overlay-text {
+  color: #ffd700;
+}
+
+
+
 /* Responsive Carousel */
 @media (max-width: 768px) {
   .custom-carousel {
