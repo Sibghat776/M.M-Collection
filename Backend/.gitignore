@@ -1,0 +1,15 @@
+./.env
+/.env
+.env
+
+./node_modules
+/node_modules
+node_modules
+
+./package-lock.json
+/package-lock.json
+package-lock.json
+
+./package.json
+/package.json
+package.json
