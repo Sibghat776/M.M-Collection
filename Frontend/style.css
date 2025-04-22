@@ -20,30 +20,14 @@
 }
 
 .carousel-caption > h5 {
-  background-color: #212529;
+  background-color: black;
   color: white;
   padding: 10px;
   border-radius: 10px;
   text-transform: uppercase;
 }
 
-/* Collection Section */
-.collection-section {
-  background-color: black;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
-  padding: 10px 0;
-  margin-top: 5%;
-}
 
-/* Cards */
-.card {
-  margin-bottom: 2%;
-  /* border: 2px solid black !important; */
-}
 
 .col-md-6 input, .col-12 input {
   border: 1px solid black;

@@ -109,31 +109,41 @@
 
   <!-- Carousel -->
   <div id="carouselExampleFade" class="carousel slide carousel-fade">
-    <div class="carousel-inner bg-light custom-carousel">
-      <div class="carousel-item p-5 active">
-        <img src="./Assets/Clothes Carousel.jpeg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Clothes</h5>
-          <p>Fast and reliable delivery across Pakistan — bringing fashion-forward styles to your doorstep, wherever you
-            are.</p>
+    <div class="carousel-inner bg-dark custom-carousel">
+      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+          <div class="carousel-item p-5 active">
+            <img src="./Assets/Clothes Carousel.jpeg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Clothes</h5>
+              <p>Fast and reliable delivery across Pakistan...</p>
+            </div>
+          </div>
+          <div class="carousel-item p-5">
+            <img src="./Assets/Accessories.jpeg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Mens Accessories</h5>
+              <p>Nationwide delivery of elegant accessories...</p>
+            </div>
+          </div>
+          <div class="carousel-item p-5">
+            <img src="./Assets/Pens.avif" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Premium pens for premium names</h5>
+              <p>Elegant pens designed to leave a lasting impression...</p>
+            </div>
+          </div>
         </div>
+      
+        <!-- Optional: Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
       </div>
-      <div class="carousel-item p-5">
-        <img src="./Assets/Accessories.jpeg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Mens Accessories</h5>
-          <p>Nationwide delivery of elegant accessories, carefully packed and promptly delivered to complete your look.
-          </p>
-        </div>
-      </div>
-      <div class="carousel-item p-5">
-        <img src="./Assets/Pens.avif" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Premium pens for premium names</h5>
-          <p>Elegant pens designed to leave a lasting impression — where your name becomes the signature of excellence
-          </p>
-        </div>
-      </div>
+      
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -147,16 +157,16 @@
 
 
   <!-- My Collection -->
-  <div class="collection-section mb-5">
+  <div class="collection-section border border-dark text-center p-2 my-5">
     <h1>My Collection</h1>
   </div>
 
   <!-- Mens Clothes -->
-  <div class="container my-5">
+  <div class="container mb-4">
     <div class="row g-4">
       <!-- Clothes Card -->
       <div class="col-md-4">
-        <a href="clothes.html" class="text-decoration-none">
+        <a href="./Mens Clothes/mensClothes.html" target="_blank" class="text-decoration-none">
           <div class="image-card position-relative overflow-hidden rounded shadow-lg">
             <img src="./Assets/Clothes/Mens Clothes Main.jpg" class="img-fluid" alt="Clothes">
             <div class="overlay-text">Clothes</div>
@@ -166,7 +176,7 @@
 
       <!-- Pens Card -->
       <div class="col-md-4">
-        <a href="pens.html" class="text-decoration-none">
+        <a href="./Pens/pens.html" target="_blank" class="text-decoration-none">
           <div class="image-card position-relative overflow-hidden rounded shadow-lg">
             <img src="./Assets/Pens.avif" class="img-fluid" alt="Pens">
             <div class="overlay-text">Pens</div>
@@ -176,10 +186,10 @@
 
       <!-- Address Card -->
       <div class="col-md-4">
-        <a href="address.html" class="text-decoration-none">
+        <a href="./Scrub/scrub.html" target="_blank" class="text-decoration-none">
           <div class="image-card position-relative overflow-hidden rounded shadow-lg">
-            <img src="./Assets/Clothes/Shirt 1.jpeg" class="img-fluid" alt="Address">
-            <div class="overlay-text">Address</div>
+            <img src="./Assets/Scrub/Scrub fits title.jpg" class="img-fluid" alt="Address">
+            <div class="overlay-text">SCRUB</div>
           </div>
         </a>
       </div>
