@@ -1,6 +1,6 @@
 import express from "express"
 import dotenv from "dotenv"
-import {authRoute} from "./Routes/authRouter.js"
+import {authRoute} from "./Routes/authRoute.js"
 
 dotenv.config()
 let app = express()
