@@ -16,11 +16,12 @@ form.addEventListener("submit", function (e) {
   const phone = document.getElementById("phoneNumber").value;
   const desc = document.getElementById("productDesc").value;
   const image = document.getElementById("productImage").files[0];
+  const cardHTML = document.createElement("div");
 
   // Card HTML (with data-phone attribute)
-  const cardHTML = `
-    <div class="card shadow mb-4 bg-body-tertiary rounded" style="width: 18rem;" data-phone="${phone}">
-      <img src="${URL.createObjectURL(image)}" alt="Product Image">
+  cardHTML.innerHTML = `
+    <div class="card shadow mb-3 bg-body-tertiary fixed-card rounded" style="width: 18rem;" data-phone="${phone}">
+      <img src="${URL.createObjectURL(image)}" class="fixed-img" alt="Product Image">
       <div class="card-body d-flex flex-column justify-content-evenly">
         <h5 class="card-title">Rs: ${price} PKR</h5>
         <p class="card-text fw-bold">${name}</p>
@@ -29,8 +30,9 @@ form.addEventListener("submit", function (e) {
       </div>
     </div>
   `;
-  cardContainer.innerHTML = ""
-  cardContainer.insertAdjacentHTML("beforeend", cardHTML);
+  const noPost = document.getElementById("noPost")
+  noPost.style.display = "none"
+  cardContainer.prepend(cardHTML);
   form.reset();
 
   const modal = bootstrap.Modal.getInstance(document.getElementById("staticBackdrop"));
