@@ -1,24 +1,23 @@
 // src/Components/ProductCards.jsx
-import React from "react";
+import React, { memo } from "react";
 import clothesMain from "../assets/clothes/Mens Clothes Main.jpg";
 import pensImg from "../assets/carousel/Pens and Men Accessories.jpg";
 import scrubImg from "../assets/scrub/Scrub fits title.jpg";
 import electronicsImg from "../assets/electronic devices/Main.jpg";
 
 const data = [
-    { name: "Clothes", img: clothesMain, link: "./Mens Clothes/mensClothes.html" },
-    { name: "Pens & Accessories", img: pensImg, link: "./Pens/pens.html" },
-    { name: "Scrub", img: scrubImg, link: "./Scrub/scrub.html" },
-    { name: "Electronic Devices", img: electronicsImg, link: "./Electronic Devices/electronicDevices.html" },
+    { name: "Clothes", img: clothesMain, link: "/clothes" },
+    { name: "Pens & Accessories", img: pensImg, link: "/accessories" },
+    { name: "Scrub", img: scrubImg, link: "/scrub" },
+    { name: "Electronic Devices", img: electronicsImg, link: "/electronicDevices" },
 ];
 
 const Cards = () => {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-6 max-w-7xl mx-auto">
+        <div id="collection" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-6 max-w-7xl mx-auto">
             {data.map(({ name, img, link }, idx) => (
                 <a
                     href={link}
-                    target="_blank"
                     rel="noreferrer"
                     key={idx}
                     className="relative group rounded shadow-lg overflow-hidden"
@@ -39,4 +38,4 @@ const Cards = () => {
     );
 };
 
-export default Cards;
+export default memo(Cards);

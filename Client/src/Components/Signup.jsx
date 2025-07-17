@@ -14,6 +14,9 @@ import LockIcon from "@mui/icons-material/Lock";
 import HomeIcon from "@mui/icons-material/Home";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import CloseIcon from "@mui/icons-material/Close";
 
 const cities = [
     "Karachi",
@@ -34,14 +37,31 @@ const Signup = ({ open, onClose }) => {
         city: "",
     });
 
+    const [showPassword, setShowPassword] = useState(false);
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
+    };
+
     return (
         <Modal open={open} onClose={onClose}>
-            <Box className="w-[90%] sm:w-[500px] bg-white p-6 rounded-xl shadow-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">SIGN UP</h2>
+            <Box className="w-[90%] sm:w-[500px] bg-white p-6 rounded-2xl shadow-2xl relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                {/* Close Icon */}
+                <IconButton
+                    onClick={onClose}
+                    className="top-[-10px] right-2 text-gray-500 hover:text-black"
+                >
+                    <CloseIcon />
+                </IconButton>
+
+                <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 tracking-wide">
+                    Create an Account
+                </h2>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <TextField
                         label="Email"
@@ -58,10 +78,11 @@ const Signup = ({ open, onClose }) => {
                             ),
                         }}
                     />
+
                     <TextField
                         label="Password"
                         name="password"
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         fullWidth
                         size="small"
                         value={formData.password}
@@ -72,8 +93,16 @@ const Signup = ({ open, onClose }) => {
                                     <LockIcon fontSize="small" />
                                 </InputAdornment>
                             ),
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton onClick={togglePasswordVisibility} edge="end">
+                                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
                         }}
                     />
+
                     <TextField
                         label="Residential Area"
                         name="area"
@@ -90,6 +119,7 @@ const Signup = ({ open, onClose }) => {
                             ),
                         }}
                     />
+
                     <TextField
                         label="House Address"
                         name="address"
@@ -106,6 +136,7 @@ const Signup = ({ open, onClose }) => {
                             ),
                         }}
                     />
+
                     <TextField
                         label="City"
                         name="city"
@@ -129,8 +160,21 @@ const Signup = ({ open, onClose }) => {
                         ))}
                     </TextField>
                 </div>
+
                 <div className="flex justify-center mt-6">
-                    <Button variant="contained" size="large" fullWidth>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        fullWidth
+                        sx={{
+                            paddingY: "10px",
+                            fontWeight: "bold",
+                            letterSpacing: "1px",
+                            fontSize: "15px",
+                            background: "#1976d2",
+                            "&:hover": { background: "#115293" },
+                        }}
+                    >
                         Sign Up
                     </Button>
                 </div>
@@ -140,4 +184,3 @@ const Signup = ({ open, onClose }) => {
 };
 
 export default Signup;
-        

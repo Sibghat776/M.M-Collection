@@ -1,32 +1,76 @@
 // src/Components/Navbar.jsx
 import React from "react";
 import { Button } from "@mui/material";
+import { Home, Collections, Login, PersonAdd } from "@mui/icons-material";
 import logo from "../assets/carousel/Logo.png";
 
-const Navbar = ({ onLoginClick,onSignupClick }) => {
+const Navbar = ({ onLoginClick, onSignupClick }) => {
     return (
-        <nav className="flex items-center justify-between px-6 py-3 bg-gray-900 text-white shadow-md sticky top-0 z-50">
-            <div className="flex items-center">
-                <img src={logo} alt="logo" className="h-10 w-10 rounded-full mr-3" />
-                <h1 className="text-2xl font-bold font-[Dancing Script]">M.M Collection</h1>
-            </div>
+        <nav className="sticky top-0 z-50 bg-gray-950 text-white shadow-lg">
+            <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 md:px-6 py-3">
+                {/* Logo */}
+                <a href="/" className="flex items-center gap-3">
+                    <img
+                        src={logo}
+                        alt="logo"
+                        className="h-10 w-10 rounded-full border border-white"
+                    />
+                    <h1 className="text-2xl font-bold font-[Dancing Script] tracking-wide">
+                        M.M Collection
+                    </h1>
+                </a>
 
-            <ul className="hidden md:flex gap-6 items-center">
-                <li className="hover:underline cursor-pointer">Home</li>
-                <li className="hover:underline cursor-pointer">My Collection</li>
-            </ul>
-            <div className="hidden md:flex items-center gap-2">
-                <Button variant="contained" onClick={onSignupClick}>
-                    Create Account
-                </Button>
-                <Button variant="outlined" onClick={onLoginClick}>
-                    Login
-                </Button>
-            </div>
+                {/* Navigation Links */}
+                <ul className="hidden md:flex gap-8 items-center text-lg font-medium">
+                    <li className="flex items-center gap-1 hover:text-blue-400 transition">
+                        <Home fontSize="small" />
+                        <a href="/">Home</a>
+                    </li>
+                    <li className="flex items-center gap-1 hover:text-blue-400 transition">
+                        <Collections fontSize="small" />
+                        <a href="#collection">My Collection</a>
+                    </li>
+                </ul>
 
+                {/* Buttons */}
+                <div className="hidden md:flex gap-3 items-center">
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        startIcon={<PersonAdd />}
+                        onClick={onSignupClick}
+                        sx={{
+                            color: "#fff",
+                            borderColor: "#90caf9",
+                            "&:hover": {
+                                backgroundColor: "#1976d2",
+                                borderColor: "#1976d2",
+                            },
+                        }}
+                    >
+                        Sign Up
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<Login />}
+                        onClick={onLoginClick}
+                        sx={{
+                            textTransform: "none",
+                            fontWeight: "bold",
+                        }}
+                    >
+                        Login
+                    </Button>
+                </div>
+
+                {/* Mobile Menu Placeholder */}
+                <div className="md:hidden">
+                    {/* Optionally add a hamburger menu here */}
+                </div>
+            </div>
         </nav>
     );
 };
 
-export default Navbar;
-
+export default React.memo(Navbar);

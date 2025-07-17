@@ -4,6 +4,9 @@ import Carousel from "../Components/Carousel";
 import ProductCards from "../Components/Cards";
 import Signup from "../Components/Signup.jsx";
 import Login from "../Components/Login.jsx";
+import Footer from "../Components/Footer.jsx";
+import Contact from "../Components/Contact.jsx";
+import About from "../Components/About.jsx";
 
 const Home = () => {
     const [openSignup, setOpenSignup] = useState(false);
@@ -22,12 +25,14 @@ const Home = () => {
             <Carousel />
 
             <div className="text-center mt-16">
-                <h1 className="text-3xl font-bold border-b w-max mx-auto pb-1">
+                <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 text-gray-900 tracking-wide">
                     My Collection
-                </h1>
+                </h2>
             </div>
-
             <ProductCards />
+            <About />
+            <Contact />
+            <Footer />
         </div>
     );
 };
