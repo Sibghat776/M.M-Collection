@@ -5,11 +5,12 @@ import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import Clothes from "../assets/carousel/Clothes Carousel.jpeg";
 import Pens from "../assets/carousel/Pens.avif";
 import Accessories from "../assets/carousel/Accessories.jpeg";
+import Scrub from "../assets/Scrub/Scrub fits title.jpg";
 
 const slides = [
     {
         image: Accessories,
-        title: "Chic Accessories",
+        title: "Mens Accessories",
         description: "Complete your look with our best accessories collection.",
     },
     {
@@ -21,6 +22,11 @@ const slides = [
         image: Pens,
         title: "Smooth Pens",
         description: "Premium quality pens for school, office, and more.",
+    },
+    {
+        image: Scrub,
+        title: "Scrub",
+        description: "Premium quality Scrub for Hospital, Labs, and more.",
     },
 ];
 

@@ -1,185 +1,118 @@
 // src/Components/Signup.jsx
-import React, { useState } from "react";
 import {
-    Modal,
-    Box,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions,
     TextField,
-    MenuItem,
-    Button,
     IconButton,
     InputAdornment,
+    Button,
+    Typography,
 } from "@mui/material";
-import EmailIcon from "@mui/icons-material/Email";
-import LockIcon from "@mui/icons-material/Lock";
-import HomeIcon from "@mui/icons-material/Home";
-import LocationCityIcon from "@mui/icons-material/LocationCity";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import CloseIcon from "@mui/icons-material/Close";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useState } from "react";
+import { useModalContext } from "../ContextApi/ModalContext";
+import { showToast } from "../Common Functions/commonFunction";
 
-const cities = [
-    "Karachi",
-    "Islamabad",
-    "Balochistan",
-    "Quetta",
-    "Peshawar",
-    "Lahore",
-    "Other",
-];
+const Signup = () => {
+    const { state, dispatch } = useModalContext();
+    const { signupOpen } = state;
 
-const Signup = ({ open, onClose }) => {
-    const [formData, setFormData] = useState({
+    const [credentials, setCredentials] = useState({
+        username: "",
         email: "",
-        password: "",
-        area: "",
-        address: "",
-        city: "",
-    });
+        password: ""
+    })
+
+    const handleClose = () => {
+        dispatch({ type: "CLOSE_SIGNUP" });
+    };
+    const handleClick = (e) => {
+        setCredentials((prev) => ({
+            ...prev,
+            [e.target.id]: e.target.value
+        }));
+        if (credentials.username || credentials.email || credentials.password) {
+            return showToast("Registered Successfully", "success", "light")
+        }
+        else {
+            showToast("Missing Fields!", "error", "dark")
+        }
+    };
+
+
 
     const [showPassword, setShowPassword] = useState(false);
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const togglePasswordVisibility = () => {
-        setShowPassword((prev) => !prev);
-    };
+    const togglePassword = () => setShowPassword((prev) => !prev);
 
     return (
-        <Modal open={open} onClose={onClose}>
-            <Box className="w-[90%] sm:w-[500px] bg-white p-6 rounded-2xl shadow-2xl relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                {/* Close Icon */}
-                <IconButton
-                    onClick={onClose}
-                    className="top-[-10px] right-2 text-gray-500 hover:text-black"
-                >
+        <Dialog
+            open={signupOpen}
+            onClose={handleClose}
+            fullWidth
+            maxWidth="xs"
+            PaperProps={{
+                style: {
+                    borderRadius: "20px",
+                    padding: "1.5rem",
+                },
+            }}
+        >
+            <DialogTitle sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <Typography variant="h6" fontWeight={600}>
+                    Create Account
+                </Typography>
+                <IconButton onClick={handleClose}>
                     <CloseIcon />
                 </IconButton>
+            </DialogTitle>
 
-                <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 tracking-wide">
-                    Create an Account
-                </h2>
+            <DialogContent dividers>
+                <TextField
+                    margin="normal"
+                    label="Username"
+                    id="username"
+                    fullWidth
+                    variant="outlined"
+                />
+                <TextField
+                    margin="normal"
+                    label="Email"
+                    type="email"
+                    id="email"
+                    fullWidth
+                    variant="outlined"
+                />
+                <TextField
+                    margin="normal"
+                    label="Password"
+                    fullWidth
+                    variant="outlined"
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton onClick={togglePassword} edge="end">
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+            </DialogContent>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <TextField
-                        label="Email"
-                        name="email"
-                        fullWidth
-                        size="small"
-                        value={formData.email}
-                        onChange={handleChange}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <EmailIcon fontSize="small" />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-
-                    <TextField
-                        label="Password"
-                        name="password"
-                        type={showPassword ? "text" : "password"}
-                        fullWidth
-                        size="small"
-                        value={formData.password}
-                        onChange={handleChange}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <LockIcon fontSize="small" />
-                                </InputAdornment>
-                            ),
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <IconButton onClick={togglePasswordVisibility} edge="end">
-                                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-
-                    <TextField
-                        label="Residential Area"
-                        name="area"
-                        fullWidth
-                        className="sm:col-span-2"
-                        size="small"
-                        value={formData.area}
-                        onChange={handleChange}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <LocationOnIcon fontSize="small" />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-
-                    <TextField
-                        label="House Address"
-                        name="address"
-                        fullWidth
-                        className="sm:col-span-2"
-                        size="small"
-                        value={formData.address}
-                        onChange={handleChange}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <HomeIcon fontSize="small" />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-
-                    <TextField
-                        label="City"
-                        name="city"
-                        select
-                        fullWidth
-                        size="small"
-                        value={formData.city}
-                        onChange={handleChange}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <LocationCityIcon fontSize="small" />
-                                </InputAdornment>
-                            ),
-                        }}
-                    >
-                        {cities.map((city) => (
-                            <MenuItem key={city} value={city}>
-                                {city}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                </div>
-
-                <div className="flex justify-center mt-6">
-                    <Button
-                        variant="contained"
-                        size="large"
-                        fullWidth
-                        sx={{
-                            paddingY: "10px",
-                            fontWeight: "bold",
-                            letterSpacing: "1px",
-                            fontSize: "15px",
-                            background: "#1976d2",
-                            "&:hover": { background: "#115293" },
-                        }}
-                    >
-                        Sign Up
-                    </Button>
-                </div>
-            </Box>
-        </Modal>
+            <DialogActions sx={{ justifyContent: "space-between", px: 3, pb: 2 }}>
+                <Button variant="outlined" color="secondary" onClick={handleClose}>
+                    Cancel
+                </Button>
+                <Button onClick={handleClick} variant="contained" color="primary">
+                    Sign Up
+                </Button>
+            </DialogActions>
+        </Dialog>
     );
 };
 

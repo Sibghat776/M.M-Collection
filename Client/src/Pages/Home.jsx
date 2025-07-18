@@ -9,18 +9,12 @@ import Contact from "../Components/Contact.jsx";
 import About from "../Components/About.jsx";
 
 const Home = () => {
-    const [openSignup, setOpenSignup] = useState(false);
-    const [openLogin, setOpenLogin] = useState(false);
-
     return (
         <div className="bg-white text-black min-h-screen">
-            <Navbar
-                onSignupClick={() => setOpenSignup(true)}
-                onLoginClick={() => setOpenLogin(true)}
-            />
+            <Navbar />
 
-            <Signup open={openSignup} handleClose={() => setOpenSignup(false)} />
-            <Login open={openLogin} handleClose={() => setOpenLogin(false)} />
+            <Signup />
+            <Login />
 
             <Carousel />
 

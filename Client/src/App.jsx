@@ -4,6 +4,9 @@ import Home from './Pages/Home'
 import ElectronicDevices from './Pages/ProductsPage'
 import ProductsPage from './Pages/ProductsPage'
 import Cards from './Components/Cards'
+import { memo } from 'react'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -16,8 +19,10 @@ function App() {
         <Route path="/accessories" element={<ProductsPage title="Accessories" />} />
         <Route path="/scrub" element={<ProductsPage title="Scrub" />} />
       </Routes>
+
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   )
 }
 
-export default App
+export default memo(App)

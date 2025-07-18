@@ -11,6 +11,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Navbar from "../Components/Navbar";
 import Contact from "../Components/Contact";
 import Footer from "../Components/Footer";
+import { AddCircleRounded } from "@mui/icons-material";
 
 const ProductsPage = ({ title = "Our Products" }) => {
     const [open, setOpen] = useState(false);
@@ -64,10 +65,11 @@ const ProductsPage = ({ title = "Our Products" }) => {
                     <Button
                         variant="contained"
                         color="warning"
-                        startIcon={<AddIcon />}
+                        startIcon={<AddCircleRounded />}
                         onClick={() => setOpen(true)}
+                        className="px-2 py-1 text-sm md:px-4 md:py-2 md:text-base capitalize transition-all duration-300 ease-in-out min-w-0 overflow-hidden max-w-[44px] md:max-w-full"
                     >
-                        Add Product
+                        <span className="hidden md:inline">Add Product</span>
                     </Button>
                 </div>
 
