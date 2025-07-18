@@ -21,21 +21,24 @@ const Signup = () => {
     const { signupOpen } = state;
 
     const [credentials, setCredentials] = useState({
-        username: "",
-        email: "",
-        password: ""
+        username: undefined,
+        email: undefined,
+        password: undefined
     })
+
+
+
+    const handleChange = (e) => {
+        setCredentials({ ...credentials, [e.target.id]: e.target.value });
+    };
 
     const handleClose = () => {
         dispatch({ type: "CLOSE_SIGNUP" });
     };
-    const handleClick = (e) => {
-        setCredentials((prev) => ({
-            ...prev,
-            [e.target.id]: e.target.value
-        }));
-        if (credentials.username || credentials.email || credentials.password) {
-            return showToast("Registered Successfully", "success", "light")
+
+    const handleClick = () => {
+        if (credentials.username && credentials.email && credentials.password) {
+            showToast("Registered Successfully", "success", "light")
         }
         else {
             showToast("Missing Fields!", "error", "dark")
@@ -61,7 +64,7 @@ const Signup = () => {
             }}
         >
             <DialogTitle sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <Typography variant="h6" fontWeight={600}>
+                <Typography fontSize={"100%"} fontWeight={600}>
                     Create Account
                 </Typography>
                 <IconButton onClick={handleClose}>
@@ -72,14 +75,18 @@ const Signup = () => {
             <DialogContent dividers>
                 <TextField
                     margin="normal"
+                    onChange={handleChange}
                     label="Username"
                     id="username"
                     fullWidth
                     variant="outlined"
+                    value={credentials.username}
                 />
                 <TextField
                     margin="normal"
+                    onChange={handleChange}
                     label="Email"
+                    value={credentials.email}
                     type="email"
                     id="email"
                     fullWidth
@@ -87,8 +94,10 @@ const Signup = () => {
                 />
                 <TextField
                     margin="normal"
+                    onChange={handleChange}
                     label="Password"
                     fullWidth
+                    value={credentials.password}
                     variant="outlined"
                     id="password"
                     type={showPassword ? "text" : "password"}

@@ -143,39 +143,54 @@ const ProductsPage = ({ title = "Our Products" }) => {
                         </form>
                     </Box>
                 </Modal>
-
-                {/* Product Cards */}
-                <div className="flex flex-wrap justify-center gap-6 mt-10">
+                <div className="flex flex-wrap justify-center gap-8 mt-12">
                     {products.length === 0 ? (
                         <Typography variant="h6" className="text-center text-gray-600">
                             No products added yet.
                         </Typography>
                     ) : (
-                        products.map((prod, index) => (
-                            <div
-                                key={index}
-                                className="bg-white max-w-xs w-full rounded-xl shadow-md hover:shadow-lg transition p-4 flex flex-col items-center"
-                            >
-                                <img
-                                    src={prod.imageURL}
-                                    alt={prod.name}
-                                    className="w-full h-56 object-cover rounded-md mb-4"
-                                />
-                                <h5 className="text-lg font-bold text-gray-800 mb-1">
-                                    Rs. {prod.price} PKR
-                                </h5>
-                                <p className="text-gray-700 font-semibold">{prod.name}</p>
-                                <p className="text-sm text-gray-500 text-center mt-2 mb-4">{prod.desc}</p>
-                                <Button
-                                    variant="outlined"
-                                    color="success"
-                                    startIcon={<WhatsAppIcon />}
-                                    onClick={() => sendWhatsApp(prod)}
+                        products.map((prod, index) => {
+                            const originalPrice = parseInt(prod.price) + 100;
+
+                            return (
+                                <div
+                                    key={index}
+                                    className="bg-white max-w-xs w-full rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_35px_rgba(0,0,0,0.15)] transition-all duration-300 p-6 flex flex-col items-center group border border-gray-100 hover:border-green-500"
                                 >
-                                    WhatsApp
-                                </Button>
-                            </div>
-                        ))
+                                    <div className="overflow-hidden rounded-xl w-full">
+                                        <img
+                                            src={prod.imageURL}
+                                            alt={prod.name}
+                                            className="w-full h-64 object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                    </div>
+
+                                    <div className="mt-4 w-full">
+                                        <h5 className="text-xl font-bold text-gray-800 mb-1">{prod.name}</h5>
+                                        <div className="flex items-center gap-3 mt-1">
+                                            <span className="text-sm text-gray-400 line-through">
+                                                 {originalPrice} PKR
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span className="text-lg text-green-600 font-semibold">
+                                                 {prod.price} PKR
+                                            </span>
+                                        </div>
+                                        <p className="text-sm text-gray-600 mt-2 mb-4">{prod.desc}</p>
+                                        <Button
+                                            variant="contained"
+                                            color="success"
+                                            startIcon={<WhatsAppIcon />}
+                                            onClick={() => sendWhatsApp(prod)}
+                                            className="!rounded-full !px-6 !py-2 !text-sm !font-semibold"
+                                        >
+                                            WhatsApp
+                                        </Button>
+                                    </div>
+                                </div>
+                            );
+                        })
                     )}
                 </div>
             </div>

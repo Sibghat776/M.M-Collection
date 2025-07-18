@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import Navbar from "../Components/Navbar";
 import Carousel from "../Components/Carousel";
 import ProductCards from "../Components/Cards";
@@ -31,4 +31,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default memo(Home);

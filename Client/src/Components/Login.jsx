@@ -24,12 +24,8 @@ const Login = () => {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
-  const handleClick = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.id]: e.target.value
-    }));
-    if (formData.username || formData.email || formData.password) {
+  const handleClick = () => {
+    if (formData.username && formData.email && formData.password) {
       return showToast("Registered Successfully", "success", "light")
     }
     else {
