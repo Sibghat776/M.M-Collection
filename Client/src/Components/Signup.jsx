@@ -1,4 +1,3 @@
-// src/Components/Signup.jsx
 import {
     Dialog,
     DialogTitle,
@@ -12,21 +11,35 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useModalContext } from "../ContextApi/ModalContext";
 import { showToast } from "../Common Functions/commonFunction";
+import { useAuthContext } from "../ContextApi/AuthContext.jsx";
 
 const Signup = () => {
     const { state, dispatch } = useModalContext();
     const { signupOpen } = state;
+    const { authDispatch } = useAuthContext();
+
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePassword = () => setShowPassword((prev) => !prev);
 
     const [credentials, setCredentials] = useState({
-        username: undefined,
-        email: undefined,
-        password: undefined
-    })
+        username: "",
+        email: "",
+        password: ""
+    });
 
-
+    // ✅ Clear fields when modal opens
+    useEffect(() => {
+        if (signupOpen) {
+            setCredentials({
+                username: "",
+                email: "",
+                password: ""
+            });
+        }
+    }, [signupOpen]);
 
     const handleChange = (e) => {
         setCredentials({ ...credentials, [e.target.id]: e.target.value });
@@ -34,21 +47,28 @@ const Signup = () => {
 
     const handleClose = () => {
         dispatch({ type: "CLOSE_SIGNUP" });
+        setCredentials({ username: "", email: "", password: "" }); // ✅ Clear on close
     };
 
     const handleClick = () => {
-        if (credentials.username && credentials.email && credentials.password) {
-            showToast("Registered Successfully", "success", "light")
-        }
-        else {
-            showToast("Missing Fields!", "error", "dark")
+        const { username, email, password } = credentials;
+
+        if (username && email && password) {
+            authDispatch({
+                type: "SET_USERNAME",
+                payload: username,
+            });
+            showToast("Registered Successfully", "success", "light");
+
+            setCredentials({ username: "", email: "", password: "" }); // ✅ Clear after submit
+
+            setTimeout(() => {
+                dispatch({ type: "CLOSE_SIGNUP" }); // ✅ Close modal after 1s
+            }, 1000);
+        } else {
+            showToast("Missing Fields!", "error", "dark");
         }
     };
-
-
-
-    const [showPassword, setShowPassword] = useState(false);
-    const togglePassword = () => setShowPassword((prev) => !prev);
 
     return (
         <Dialog
